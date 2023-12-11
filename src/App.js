@@ -9,7 +9,7 @@ import DashboardPage from "./pages/DashboardPage";
 import AdminDashboard from "./pages/AdminDashboard"; // Import the AdminDashboard
 import ProtectedRoute from "./components/ProtectedRoute";
 import NavigationBar from "./components/NavigationBar";
-import HomePage from "./pages/HomePage";
+//import HomePage from "./pages/HomePage";
 import ProductDetailPage from './components/ProductDetailPage';
 import ProfilePage from './pages/ProfilePage';
 
@@ -17,6 +17,7 @@ function App() {
   return (
     <Router>
       <NavigationBar />
+      
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -29,14 +30,12 @@ function App() {
           }
         />
         <Route path="/profile/:uniqueId" element={<ProfilePage />} />
-        <Route
+        {/* <Route
           path="/homepage"
           element={
-            // <ProtectedRoute>
               <HomePage />
-            // </ProtectedRoute>
           }
-        />
+        /> */}
         {/* Admin Dashboard Route */}
         <Route
           path="/admin-dashboard"c
