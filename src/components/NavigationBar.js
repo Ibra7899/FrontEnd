@@ -43,6 +43,7 @@ export default function NavigationAppBar() {
     // Include other user fields that need to be editable
   });
 
+
   useEffect(() => {
     const checkAuthStatus = () => {
       const token = localStorage.getItem("userToken");
@@ -64,6 +65,7 @@ export default function NavigationAppBar() {
     };
   }, [location]); // Added location as a dependency
 
+
   const fetchUserData = async () => {
     try {
       const uniqueId = localStorage.getItem("_id");
@@ -72,7 +74,7 @@ export default function NavigationAppBar() {
         return;
       }
       const response = await fetch(
-        `http://localhost:5000/users/profile/${uniqueId}`
+        `https://ecomm-app-6ov7.onrender.com/users/profile/${uniqueId}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch user data");
@@ -84,32 +86,37 @@ export default function NavigationAppBar() {
     }
   };
 
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+
   const handleAccountPopupOpen = () => {
     setAccountPopupOpen(true);
   };
+
 
   const handleAccountPopupClose = () => {
     setAccountPopupOpen(false);
   };
 
-  const handleLogin = () => {
-    navigate("/login");
-    handleClose();
-    window.location.reload();
-  };
+
+  // const handleLogin = () => {
+  //   <Link to="/login"></Link>
+  //   handleClose();
+  // };
 
   const handleSignup = () => {
     navigate("/signup");
     handleClose();
   };
+
 
   const handleLogout = () => {
     localStorage.removeItem("userToken");
@@ -128,7 +135,7 @@ export default function NavigationAppBar() {
   };
 
 
-  const handleAccountEditOpen = () => {
+const handleAccountEditOpen = () => {
     setEditAccountData({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -138,15 +145,18 @@ export default function NavigationAppBar() {
     setEditAccountPopupOpen(true);
 };
 
+
 const handleAccountSave = async () => {
-  try {
+
+  
+try {
       const userToken = localStorage.getItem('userToken');
       if (!userToken) {
           setAlert({ show: true, type: 'error', message: 'No user token found. Please log in.' });
           return;
       }
 
-      await axios.put(`http://localhost:5000/users/update/${user._id}`, editAccountData, {
+      await axios.put(`https://ecomm-app-6ov7.onrender.com/users/update/${user._id}`, editAccountData, {
           headers: {
               'Authorization': `Bearer ${userToken}`
           }
@@ -157,10 +167,13 @@ const handleAccountSave = async () => {
 
       // Navigate to the same route to effectively reload the current page
       navigate(0);
+
   } catch (error) {
       console.error('Error updating account:', error);
       setAlert({ show: true, type: 'error', message: 'Error updating account. Please try again.' });
   }
+
+
 };
 
   return (
@@ -259,12 +272,16 @@ const handleAccountSave = async () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem key="login" onClick={handleLogin}>
-                Login
-              </MenuItem>
+
+             
+              <Link to="/login">
+                  <MenuItem key="login">Login</MenuItem>
+              </Link>
+
               <MenuItem key="signup" onClick={handleSignup}>
                 Signup
               </MenuItem>
+
             </Menu>
           )}
         </Toolbar>
@@ -293,7 +310,6 @@ const handleAccountSave = async () => {
                 <Typography variant="body1">
                     <b>Role:</b> {user.role}
                 </Typography>
-                {/* Add more fields as needed */}
             </>
         ) : (
             <Typography>Loading user details...</Typography>

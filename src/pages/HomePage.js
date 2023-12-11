@@ -21,7 +21,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const query = new URLSearchParams(location.search).get('search');
-    fetch(`http://localhost:5000/products/search?query=${query || ''}`)
+    fetch(`https://ecomm-app-6ov7.onrender.com/products/search?query=${query || ''}`)
       .then(response => response.json())
       .then(data => {
         setProducts(data.products);

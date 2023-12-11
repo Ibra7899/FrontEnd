@@ -47,7 +47,7 @@ const ProductCreationPopup = ({ open, handleClose, refreshProducts }) => {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/products/register",
+        "https://ecomm-app-6ov7.onrender.com/products/register",
         productDataWithOwner,
         {
           headers: {

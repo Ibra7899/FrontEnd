@@ -23,7 +23,7 @@ const WelcomePage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products/listproducts")
+    fetch("https://ecomm-app-6ov7.onrender.com/products/listproducts")
       .then(response => response.json())
       .then(data => {
         // Filter out products where 'isActive' is false

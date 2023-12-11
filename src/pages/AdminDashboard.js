@@ -57,7 +57,7 @@ const AdminDashboard = () => {
     try {
       const userToken = localStorage.getItem("userToken");
       const response = await axios.get(
-        "http://localhost:5000/products/myproducts",
+        "https://ecomm-app-6ov7.onrender.com/products/myproducts",
         {
           headers: {
             Authorization: `Bearer ${userToken}`,
@@ -105,7 +105,7 @@ const AdminDashboard = () => {
       }
 
       await axios.put(
-        `http://localhost:5000/products/update/${currentProduct._id}`,
+        `https://ecomm-app-6ov7.onrender.com/products/update/${currentProduct._id}`,
         editProductData,
         {
           headers: {
@@ -141,7 +141,7 @@ const AdminDashboard = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/products/togglestatus/${currentProduct._id}`,
+        `https://ecomm-app-6ov7.onrender.com/products/togglestatus/${currentProduct._id}`,
         {},
         {
           headers: {

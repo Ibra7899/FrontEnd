@@ -11,7 +11,7 @@ const ProfilePage = () => {
     const fetchUserProfile = useCallback(async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`http://localhost:5000/users/profile/${uniqueId}`);
+            const response = await axios.get(`https://ecomm-app-6ov7.onrender.com/users/profile/${uniqueId}`);
             setUserProfile(response.data);
         } catch (error) {
             console.error('Error fetching user profile:', error);

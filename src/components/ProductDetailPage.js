@@ -14,9 +14,10 @@ function ProductDetailPage() {
   const [newQuestion, setNewQuestion] = useState('');
   const [newAnswer, setNewAnswer] = useState({});
 
+
   const fetchProduct = async () => {
     try {
-        const response = await fetch(`http://localhost:5000/products/listproduct/${productId}`);
+        const response = await fetch(`https://ecomm-app-6ov7.onrender.com/products/listproduct/${productId}`);
         const data = await response.json();
         if (response.ok) {
             setProduct(data.product);
@@ -28,10 +29,12 @@ function ProductDetailPage() {
     }
 };
 
+
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/products/listproduct/${productId}`);
+        const response = await fetch(`https://ecomm-app-6ov7.onrender.com/products/listproduct/${productId}`);
         const data = await response.json();
         if (response.ok) {
           setProduct(data.product);
@@ -54,7 +57,7 @@ function ProductDetailPage() {
 
 const handleConfirmPurchase = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/purchase/${productId}`, {
+      const response = await fetch(`https://ecomm-app-6ov7.onrender.com/purchase/${productId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +93,7 @@ const handleConfirmPurchase = async () => {
   const handleQuestionSubmit = async () => {
     try {
       fetchProduct();
-      const response = await fetch(`http://localhost:5000/products/add-question/${productId}`, {
+      const response = await fetch(`https://ecomm-app-6ov7.onrender.com/products/add-question/${productId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -111,9 +114,11 @@ const handleConfirmPurchase = async () => {
     }
   };
 
+
+
   const handleAnswerSubmit = async (questionId) => {
     try {
-        const response = await fetch(`http://localhost:5000/products/answer-question/${productId}/${questionId}`, {
+        const response = await fetch(`https://ecomm-app-6ov7.onrender.com/products/answer-question/${productId}/${questionId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -220,5 +225,6 @@ const handleConfirmPurchase = async () => {
     
   );
 }
+
 
 export default ProductDetailPage;

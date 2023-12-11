@@ -19,7 +19,7 @@ const LoginPage = () => {
         event.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:5000/users/login', { email, password });
+            const response = await axios.post('https://ecomm-app-6ov7.onrender.com/users/login', { email, password });
             setLoading(false);
             if (response.status === 200) {
                 localStorage.setItem('userToken', response.data.token);

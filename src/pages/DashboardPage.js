@@ -7,7 +7,7 @@ const DashboardPage = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/users/listusers');
+            const response = await axios.get('https://ecomm-app-6ov7.onrender.com/users/listusers');
             const userData = response.data.map(user => ({
                 id: user._id, // Using server-generated ID
                 name: `${user.firstName} ${user.lastName}`, // Concatenating first name and last name
